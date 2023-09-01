@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" <meta nome="viewport"
+        content="width=device-width, initial-scale=1.0" />
+    <title> IMAGINE Software </title> 
+    <link rel="shortcut icon" href="img\logoImagine.ico" type="imagemIcone" /> 
+
+</head>
+
+<body style="background-color: #F7F7F7">
+   <div style="background-color: #3F5161">
+        <start>
+            <a href="index.html">
+                <img src="img\Imaginelogo.jpg" alt="imagemLogo" height="70" width="200" />
+            </a>
+        </start>
+    </div>
+
+    <p></p>
+    
+    <div>
+        <div id ="divPesquisa">
+            <table> 
+                <tr align="right">
+                        <td style="width:1760px"  class="divSearch"> 
+                            <label for ="search"></label>      <!--  ### depois pode apagar esse e so texto-->
+                            <input type="search" />
+                        <img src="img\imgPesquisa.jpg" id="btnBusca" alt="Buscar" height="10" width="15" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+ 
+        <div id="dadosApiID"  class = "contentResultadoPesquisa" align="center" > <!-- div id referente ao nome dentro do json-->
+            <table border="1">
+                <tr>
+                    <td style="width:400px"> Id</td>
+                    <td style="width:400px"> Titulo </td>
+                    <td style="width:400px"> Concluído </td>
+                    <td style="width:400px"> Detalhes </td>
+                </tr>
+            </table>
+            
+            <script src="script.js"></script>
+
+            <script >
+                let divDadosApi = document.querySelector("#dadosApiID") // chamando o id da div
+                    fetch("dadosApi.json").then((response) => { // caminho onde vai pegar os dados local ou api
+                        response.json().then((dadosApi) => { //nome da "Api se chama dadosApi "
+                            dadosApi.dadosApiID.map((informacoesJsonApelido) => { //array do json com os dados dentro nome do arquivo depois nome do id dentro do json
+                                divDadosApi.innerHTML += //pegar os dados do json e aprensetar na div divDadosJson
+                                    `<table border="1"> 
+                                        <tr>  
+                                            <td style="width:400px"> ${informacoesJsonApelido.id} </td>
+                                            <td style="width:400px"> ${informacoesJsonApelido.title} </td>
+                                            <td style="width:400px" Align="right"> ${informacoesJsonApelido.concluído}<input type ="checkbox" id = checkboxJson> </td>
+                                            <td style="width:400px"> <a href="ErroPagina.html"><img src="img/imgDetalhe.jpg" height="23" width="18" Align="right"> </a> </td> 
+                                        </tr>
+                                    </table>`
+                            });
+                        })
+                    })
+            </script>
+            
+        </div>
+</body>
+
+</html>
